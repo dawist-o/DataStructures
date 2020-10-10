@@ -4,7 +4,10 @@ import DataStructures.MyDeque.MyDeque;
 import DataStructures.MyLinkedList.MyLinkedList;
 import DataStructures.Pair;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Comparator;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class Tree<V>{
 
@@ -198,11 +201,11 @@ public class Tree<V>{
             return "";
         }
         int level = 1;
-        MyDeque<Pair<Node, Integer>> pairs = new MyLinkedList();
+        Deque<Pair<Node, Integer>> pairs = new LinkedList();
         String printedTree = "";
         pairs.add(new Pair<>(treeRoot, level));
         while (!pairs.isEmpty()) {
-            Pair<Node, Integer> currentPair = pairs.getLast();
+            Pair<Node, Integer> currentPair = pairs.removeFirst();
             if (currentPair.getLvl() > level) {
                 printedTree += "\n";
                 level++;
@@ -215,6 +218,17 @@ public class Tree<V>{
                 pairs.add(new Pair<>(currentPair.getNode().rightChild, currentPair.getLvl() + 1));
         }
         return printedTree;
+    }
+    public void printTreeWDS(){
+        printTreeWDS(this.treeRoot);
+    }
+
+    private void printTreeWDS(Node node){
+        if(node==null)
+            return;
+        printTreeWDS(node.leftChild);
+        System.out.print(node.value+", ");
+        printTreeWDS(node.rightChild);
     }
 
     public void deleteTree() {
