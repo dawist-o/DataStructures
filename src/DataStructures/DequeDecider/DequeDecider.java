@@ -23,10 +23,8 @@ public class DequeDecider {
             for (DequeThread thread : dequesThreads) {
                 if (thread.getPriority() == DequePriority.LOW &&
                         !thread.getDeque().isEmpty()) {
-                    System.out.println(thread.getDeque().getFirst());
                     outputDeque.addLast(thread.getDeque().removeFirst());
                     isNotEmpty = !thread.getDeque().isEmpty();
-                    continue;
                 }
             }
         }
