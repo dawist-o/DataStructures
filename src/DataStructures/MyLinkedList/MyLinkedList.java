@@ -13,7 +13,6 @@ public class MyLinkedList<V extends Comparable<V>> implements MyListInterface<V>
     private Node last;
 
 
-
     public void toArray(V[] array) {
         if (array.length < this.size)
             throw new IncorrectInputArraySizeException("Input array size is less then list size");
@@ -236,25 +235,23 @@ public class MyLinkedList<V extends Comparable<V>> implements MyListInterface<V>
 
     @Override
     public String toString() {
-        if (size == 0) {
-            return "[]";
-        } else {
-            StringBuilder sb = new StringBuilder();
-            sb.append('[');
-            Node current = first;
-            while (current.next != null) {
-                sb.append(current.value);
-                current = current.next;
-                sb.append(',').append(' ');
-            }
-            sb.append(current.value).append(']');
-            return sb.toString();
+        if (size == 0) return "[]";
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        Node current = first;
+        while (current.next != null) {
+            sb.append(current.value);
+            current = current.next;
+            sb.append(',').append(' ');
         }
+        sb.append(current.value).append(']');
+        return sb.toString();
+
     }
 
     @Override
-    public void addAllLast(MyDeque<V> values){
-        for (V value:values) {
+    public void addAllLast(MyDeque<V> values) {
+        for (V value : values) {
             this.addLast(value);
         }
     }
@@ -264,14 +261,14 @@ public class MyLinkedList<V extends Comparable<V>> implements MyListInterface<V>
         return new MyListIterator();
     }
 
-    private class MyListIterator implements Iterator<V>{
+    private class MyListIterator implements Iterator<V> {
         private Node current;
 
         @Override
         public boolean hasNext() {
-            if(current == null){
+            if (current == null) {
                 current = first;
-            }else{
+            } else {
                 current = current.next;
             }
             return Optional.ofNullable(current).isPresent();
@@ -287,7 +284,6 @@ public class MyLinkedList<V extends Comparable<V>> implements MyListInterface<V>
     }
 
     public class Node {
-
         private Node next;
         private Node prev;
         private V value;

@@ -1,35 +1,21 @@
 package test;
 
-import DataStructures.DequeDecider.DequeDecider;
-import DataStructures.DequeDecider.DequePriority;
-import DataStructures.DequeDecider.DequeThread;
-import DataStructures.MyDeque.MyDeque;
-import DataStructures.MyLinkedList.MyLinkedList;
+import DataStructures.Tree.RBTree;
 
-import java.lang.reflect.Array;
-import java.util.*;
+// RED = false;
+//  BLACK = true;
 
 public class Test {
     public static void main(String[] args) {
-        MyDeque<Integer> fstDeq=new MyLinkedList();
-        fstDeq.add(12);
-        fstDeq.add(13);
-        fstDeq.add(14);
-        DequeThread fst=new DequeThread(fstDeq, DequePriority.LOW);
-
-        MyDeque<String> secndDeq=new MyLinkedList();
-        secndDeq.add("22");
-        secndDeq.add("23");
-        secndDeq.add("24");
-        DequeThread scnd=new DequeThread(secndDeq, DequePriority.HIGH);
-
-        MyDeque<Integer> thrdDeq=new MyLinkedList();
-        thrdDeq.add(32);
-        thrdDeq.add(33);
-        thrdDeq.add(34);
-        DequeThread thrd=new DequeThread(thrdDeq, DequePriority.LOW);
-
-        DequeDecider dequeDecider=new DequeDecider(Arrays.asList(fst,scnd,thrd));
-        System.out.println(dequeDecider.getPriorityDeque().toString());
+        RBTree<Integer, Integer> tree = new RBTree();
+        tree.put(10, 2);
+        tree.put(20, 7);
+        tree.put(30, 7);
+        tree.put(40, 7);
+        tree.put(60, 7);
+        tree.put(5, 7);
+        tree.put(3, 7);
+        System.out.println(tree);
     }
+
 }
